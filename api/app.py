@@ -16,5 +16,5 @@ def romanize_thai():
 
     return jsonify({"romanized": romanized_text})
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+if __name__ == "__main__":
+    app.run(debug=True)
