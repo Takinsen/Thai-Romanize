@@ -1,4 +1,5 @@
 attacut==1.0.6
 Flask==3.1.0
 pythainlp==5.1.2
-gunicorn==20.1.1
+gunicorn==20.0.4
+
