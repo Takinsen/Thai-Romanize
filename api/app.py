@@ -10,7 +10,7 @@ def romanize_thai():
     if not text:
         return jsonify({"error": "Missing 'text' parameter"}), 400
 
-    words = word_tokenize(text)
+    words = word_tokenize(text, engine="attacut")
     romanized_words = [romanize(word, engine="thai2rom") for word in words]
     romanized_text = " ".join(romanized_words)
 
