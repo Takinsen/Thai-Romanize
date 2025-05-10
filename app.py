@@ -18,6 +18,3 @@ def romanize_thai():
         return jsonify({"romanized": romanized_text})
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
-    
-if __name__ == "__main__":
-    app.run(debug=True)
