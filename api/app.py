@@ -6,15 +6,19 @@ app = Flask(__name__)
 
 @app.route("/romanize", methods=["GET"])
 def romanize_thai():
-    text = request.args.get("text")
-    if not text:
-        return jsonify({"error": "Missing 'text' parameter"}), 400
+    try:
+        text = request.args.get("text")
+        if not text:
+            return jsonify({"error": "Missing 'text' parameter"}), 400
 
-    words = word_tokenize(text)
-    romanized_words = [romanize(word, engine="thai2rom") for word in words]
-    romanized_text = " ".join(romanized_words)
+        words = word_tokenize(text)
+        romanized_words = [romanize(word, engine="thai2rom") for word in words]
+        romanized_text = " ".join(romanized_words)
 
-    return jsonify({"romanized": romanized_text})
+        return jsonify({"romanized": romanized_text})
+    except Exception as e:
+        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
+
 
 if __name__ == "__main__":
     app.run(debug=True)
