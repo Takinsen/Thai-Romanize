@@ -1,9 +1,13 @@
 import os
+from flask import Flask, request, jsonify
 
-# Set a custom path for pythainlp data, using Vercel's writable /tmp directory
+# Set custom path for pythainlp data before importing pythainlp
 os.environ["PYTHAINLP_DATA_PATH"] = "/tmp/pythainlp_data"
 
-from flask import Flask, request, jsonify
+# Ensure the directory exists
+os.makedirs(os.environ["PYTHAINLP_DATA_PATH"], exist_ok=True)
+
+# Now import pythainlp
 from pythainlp.transliterate import romanize
 from pythainlp.tokenize import word_tokenize
 
@@ -23,7 +27,6 @@ def romanize_thai():
         return jsonify({"romanized": romanized_text})
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
-
 
 if __name__ == "__main__":
     app.run(debug=True)
