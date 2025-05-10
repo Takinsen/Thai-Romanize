@@ -1,3 +1,8 @@
+import os
+
+# Set a custom path for pythainlp data, using Vercel's writable /tmp directory
+os.environ["PYTHAINLP_DATA_PATH"] = "/tmp/pythainlp_data"
+
 from flask import Flask, request, jsonify
 from pythainlp.transliterate import romanize
 from pythainlp.tokenize import word_tokenize
