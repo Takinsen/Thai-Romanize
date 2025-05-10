@@ -1,9 +1,19 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/app.py", "use": "@vercel/python" }
+    {
+      "src": "api/app.py",
+      "use": "@vercel/python",
+      "config": {
+        "installCommand": "pip install -r api/requirements.txt && python api/setup.py"
+      }
+    }
   ],
   "routes": [
-    { "src": "/romanize", "dest": "/api/app.py" }
+    {
+      "src": "/romanize",
+      "methods": ["GET"],
+      "dest": "/api/app.py"
+    }
   ]
 }

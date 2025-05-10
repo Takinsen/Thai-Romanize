@@ -1,13 +1,13 @@
 import os
 from flask import Flask, request, jsonify
 
-# Set custom path for pythainlp data before importing pythainlp
+# MUST be set before any PyThaiNLP imports
 os.environ["PYTHAINLP_DATA_PATH"] = "/tmp/pythainlp_data"
 
-# Ensure the directory exists
+# Create the directory immediately
 os.makedirs(os.environ["PYTHAINLP_DATA_PATH"], exist_ok=True)
 
-# Now import pythainlp
+# Now import PyThaiNLP components
 from pythainlp.transliterate import romanize
 from pythainlp.tokenize import word_tokenize
 
