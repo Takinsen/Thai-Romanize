@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/romanize.py",
+      "src": "app.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/romanize",
-      "dest": "/api/romanize.py"
+      "dest": "/app.py"
     }
   ]
 }
