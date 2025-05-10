@@ -1,14 +1,4 @@
 from flask import Flask, request, jsonify
-
-import os
-
-# Create the temp directory first
-os.makedirs("/tmp/pythainlp_data", exist_ok=True)
-
-# Set a custom path for PyThaiNLP data
-os.environ["PYTHAINLP_DATA_PATH"] = "/tmp/pythainlp_data"
-
-# Now import PyThaiNLP components
 from pythainlp.transliterate import romanize
 from pythainlp.tokenize import word_tokenize
 
@@ -28,6 +18,3 @@ def romanize_thai():
         return jsonify({"romanized": romanized_text})
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
-
-if __name__ == "__main__":
-    app.run(debug=True)
